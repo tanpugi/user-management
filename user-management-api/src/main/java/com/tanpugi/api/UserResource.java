@@ -29,7 +29,7 @@ public class UserResource {
 	private UserQueryService userQueryService;
 
 	@ResponseBody
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(value="/create", method=RequestMethod.POST)
 	public UserAddResponse add(@Valid @RequestBody UserAddRequest request) {
 		DefaultUserModel m = mapper(new DefaultUserModel(), request);
 		userService.addUser(m);

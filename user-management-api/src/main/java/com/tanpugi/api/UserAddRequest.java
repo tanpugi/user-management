@@ -18,11 +18,8 @@ public class UserAddRequest {
 	private String email;
 	@NotNull
 	private String introduction;
-	@NotNull
 	private String accessCode;
-	@NotNull
 	private String jobDescription;
-	@NotNull
 	private Date dateOfBirth;
 	
 	public String getType() {
