@@ -9,7 +9,7 @@ import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
-import com.sun.jna.platform.win32.Netapi32Util.User;
+import com.tanpugi.cqrs.command.User;
 import com.tanpugi.cqrs.command.UserService;
 import com.tanpugi.cqrs.query.QUser;
 import com.tanpugi.cqrs.shared.DefaultUserModel;
@@ -35,7 +35,7 @@ public class ApplicationInitializer {
 		}
 		
 		{
-			mongoTemplate.dropCollection(User.class);
+			//mongoTemplate.dropCollection(User.class);
 		}
 		
 		DefaultUserModel m = null;
