@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row" *ngIf="messageType === 'success'">
+    <div class="alert alert-success" role="alert"><strong>Success!</strong> {{ message }}</div>
+  </div>
+  <div class="row" *ngIf="messageType === 'error'">
+    <div class="alert alert-danger" role="alert"><strong>Error!</strong> {{ message }}</div>
+  </div>
+  <div class="row">
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
+    <div>
+      <div class="form-group">
+        <div class="radio-inline">
+          <label>
+            <input ngModel #type="ngModel"
+              type="radio" name="type" value="admin"
+              [ngModel]="defaultType"
+              required>Admin
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            <input ngModel #type="ngModel"
+              type="radio" name="type" value="normal"
+              [ngModel]="defaultType"
+              required>Normal User
+          </label>
+        </div>
+        <span *ngIf="!type.valid"
+          class="help-block">Please select a user type</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="fname">Firstname</label>
+        <input ngModel #fname="ngModel" 
+          type="text" name="fname"
+          placeholder="Your Firstname" class="form-control"
+          required>
+          <span *ngIf="!fname.valid && fname.touched"
+            class="help-block">Please enter your Firstname</span>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lname">Lastname</label>
+        <input ngModel #lname="ngModel"
+          type="text" name="lname"
+          placeholder="Your Lastname" class="form-control"
+          required>
+          <span *ngIf="!lname.valid && lname.touched"
+            class="help-block">Please enter your Lastname</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input ngModel #email="ngModel"
+              type="email" name="email"
+              placeholder="Your Email Address" class="form-control"
+              email required>
+              <span *ngIf="!email.valid && email.touched"
+                class="help-block">Please enter a valid email address</span>
+          </div>
+          <div class="form-group" *ngIf="type.value === 'normal'">
+            <label for="dob">Date of Birth</label>
+            <input [ngModel]="defaultDob | date:'yyyy/mm/dd'" #dob="ngModel"
+              type="date" name="dob"
+              placeholder="MM/DD/YYYY" class="form-control"
+              required>
+            <span *ngIf="!dob.valid && dob.touched"
+              class="help-block">Please input your valid date of birth</span>
+          </div>
+        <div class="form-group" *ngIf="type.value === 'admin'">
+          <label for="accessCode">Access Code</label>
+          <input ngModel #accessCode="ngModel"
+            type="text" name="accessCode"
+            placeholder="Your Admin Access Code" class="form-control"
+            required>
+          <span *ngIf="!accessCode.valid && accessCode.touched"
+            class="help-block">Please input your access code</span>
+        </div>
+      </div>
+      <div class="form-group col-md-8">
+          <label for="introDesc">Introduction</label>
+          <textarea ngModel #introDesc="ngModel" 
+            name="introDesc" 
+            placeholder="Introduce yourself..." rows="5" class="form-control"
+            required></textarea>
+          <span *ngIf="!introDesc.valid && introDesc.touched"
+            class="help-block">Please input some introduction</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-12" *ngIf="type.value === 'admin'">
+        <label for="jobDesc">Job Description</label>
+        <textarea ngModel #jobDesc="ngModel"
+          name="jobDesc"
+          placeholder="Please describe your job responsibiliti(es)..." rows="3" class="form-control"
+          required></textarea>
+        <span *ngIf="!jobDesc.valid && jobDesc.touched"
+          class="help-block">Please describe your job responsibiliti(es)</span>
+      </div>
+    </div>
+    <div class="form-group col-md-12">
+        <button class="btn btn-primary" type="submit"
+          [disabled]="!f.valid">Submit</button>
+    </div>
+  </form>
+  </div>
+</div>

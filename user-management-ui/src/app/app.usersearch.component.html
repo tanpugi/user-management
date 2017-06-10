@@ -1,0 +1,20 @@
+<div class="container" *ngIf="userSearchModel.users">
+  <div class="row" *ngIf="messageType === 'success'">
+    <div class="alert alert-success" role="alert"><strong>Success!</strong> {{ message }}</div>
+  </div>
+  <div class="row" *ngIf="messageType === 'error'">
+    <div class="alert alert-danger" role="alert"><strong>Error!</strong> {{ message }}</div>
+  </div>
+  <div class="row" *ngFor="let user of userSearchModel.users">
+      <strong>Type: </strong>{{ user.type }} <br />
+      <strong>User Id: </strong>{{ user.userId }}<br />
+      <strong>First Name: </strong>{{ user.firstName }}<br />
+      <strong>Last Name: </strong>{{ user.lastName }}<br />
+      <strong>Email: </strong>{{ user.email }}<br />
+      <strong>Bio Data: </strong>{{ user.introduction }}<br />
+      <strong>Access Code: </strong>{{ user.accessCode }}<br />
+      <strong>Job Description: </strong>{{ user.jobDescription }}<br />
+      <strong>DOB: </strong>{{ user.dateOfBirth }}<br />
+      <p></p>
+  </div>
+</div>
