@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { NgForm } from '@angular/forms';
 
 import { UserService } from './shared/user.service';
 import { UserSearchModel } from './shared/usersearch.model';
@@ -9,6 +11,7 @@ import { UserSearchModel } from './shared/usersearch.model';
   styleUrls: ['./app.component.css']
 })
 export class AppUserSearchComponent {
+  @ViewChild('f') searchForm: NgForm;
   messageType: string = 'none';
   message: string = "";
 
@@ -16,9 +19,10 @@ export class AppUserSearchComponent {
 
   constructor(private userService: UserService) {}
 
-  onSearch() {
-    let searchModel: {keywords: string, page: number};
-    let rx = this.userService.search(searchModel.keywords, searchModel.page);
+  onSubmit() {
+    let keywords = this.searchForm.value.keywords;
+    let page = 0;
+    let rx = this.userService.search(keywords, page);
     rx.subscribe(
       (res) => {
         this.userSearchModel.users = res.users;

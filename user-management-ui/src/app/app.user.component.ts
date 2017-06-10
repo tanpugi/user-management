@@ -47,6 +47,7 @@ export class AppUserComponent {
   }
 
   private mapper(userModel: UserModel, userForm: NgForm) : UserModel {
+    userModel.type = this.userForm.value.type;
     userModel.firstName = this.userForm.value.fname;
     userModel.lastName = this.userForm.value.lname;
     userModel.email = this.userForm.value.email;

@@ -13,14 +13,14 @@ export class UserService {
 
     public addUser(userModel: UserModel): Observable<any> {
         return this._http
-            .get('./assets/useradd.json', userModel)
+            .post('/user/create', userModel)
             .map((res: any) => res.json())
             .share();
     }
 
     public search(keywords: string, page: number): Observable<any> {
         return this._http
-            .get('./assets/usersearch.json?keywords=${keywords}&page=${page}')
+            .get('/user/search?keywords=' + keywords +'&page=' + page)
             .map((res: any) => res.json())
             .share();
     }

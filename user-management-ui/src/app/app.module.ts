@@ -9,11 +9,6 @@ import { AppUserComponent } from './app.user.component';
 import { AppUserSearchComponent } from './app.usersearch.component';
 import { UserService } from './shared/user.service';
 
-const appRoutes: Routes = [
-  { path: '', component: AppUserComponent},
-  { path: 'search', component: AppUserSearchComponent }
-];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,8 +18,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    RouterModule.forRoot(appRoutes)
+    HttpModule
   ],
   providers: [ UserService ],
   bootstrap: [ AppComponent ]
